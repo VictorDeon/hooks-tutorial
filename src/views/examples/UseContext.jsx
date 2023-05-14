@@ -1,16 +1,10 @@
 import React, { useContext } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
-import DataContext from '../../data/DataContext'
+import { AppContext } from '../../data/store'
 
+// Você pode ter quantos providers vc quiser um dentro do outro
 const UseContext = props => {
-    const {state, setState} = useContext(DataContext);
-
-    function setNumber(n) {
-        setState({
-            ...state,
-            number: state.number + n
-        })
-    }
+    const {number, text, setNumber} = useContext(AppContext);
 
     return (
         <div className="UseContext">
@@ -20,12 +14,12 @@ const UseContext = props => {
             />
 
             <div className='center'>
-                <span className='text'>{state.text}</span>
-                <span className='text'>{state.number}</span>
+                <span className='text'>{text}</span>
+                <span className='text'>{number}</span>
 
                 <div>
-                    <button className='btn' onClick={() => setNumber(-1)}>-1</button>
-                    <button className='btn' onClick={() => setNumber(1)}>+1</button>
+                    <button className='btn' onClick={() => setNumber(number - 1)}>-1</button>
+                    <button className='btn' onClick={() => setNumber(number + 1)}>+1</button>
                 </div>
             </div>
         </div>
