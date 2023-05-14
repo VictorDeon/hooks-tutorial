@@ -16,6 +16,7 @@ const UseEffect = props => {
     const [fatorial, setFatorial] = useState(1);
 
     // Podemos usar o useEffect como um componentDidMount só não botar dependencia
+    // nele você pode mudar o estado da aplicação sem causar loop
     useEffect(() => { console.log("Oi sou o componentDidMount do component de classe"); }, [])
 
     // Primeiro parâmetro é a função de efeito colateral (callback)
